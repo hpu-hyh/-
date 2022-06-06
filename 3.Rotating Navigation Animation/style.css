@@ -1,0 +1,105 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body,html {
+    background-color: #232425;
+    overflow-x: hidden;
+}
+.page-container {
+    transform-origin: left top;
+    width: 100%;
+    height: 100vh;
+    background-color: #ccc;
+    transition: transform .4s ease;
+}
+.show-nav{/*js*/
+    transform: rotate(-20deg);
+}
+.page-container > .circle-container > .circle {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    background-color: #2396ef;
+    position: relative;
+    transition: transform .4s ease-in-out;
+}
+.page-container > .circle-container {
+    position: fixed;
+    left: -75px;
+    top: -75px;
+}
+.page-container > .circle-container > .circle i {
+    width: 35px;
+    height: 35px;
+    position: absolute;
+    top: 90px;
+    background-size: 100%;/*扩大点击范围*/
+    cursor: pointer;
+    z-index: 999;
+}
+.page-container > .circle-container > .circle > .open {
+    background-image: url('./images/close.svg');
+    left: 50%;
+}
+.page-container > .circle-container > .circle > .close {
+    background-image: url('./images/menu.svg');
+    left: 60%;
+}
+.page-container > .circle-container > .circle > .open.hidden {
+    left: -60%;
+}
+.page-container > .circle-container > .circle > .close.hidden {
+    transform: rotate(90deg);
+    transform-origin: top left;
+    left: 30%;
+}
+.navList {
+    position: absolute;
+    bottom: 80px;
+    left: -40px;
+}
+.navList ul li{
+    list-style: none;
+    padding-left: 15px;
+    margin: 20px 0;
+    transition: transform .4s ease-in-out;
+    transform: translateX(-100%);
+}
+.navList ul li::before {
+    content: "";
+    display: inline-block;
+    vertical-align: middle;
+    width: 25px;
+    height: 25px;
+    margin-right: 15px;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+.navList ul li:first-child::before {
+    background-image:url('./images/Website.png');
+}
+.navList ul li:nth-child(2)::before {
+    background-image:url('./images/project.png');
+}
+.navList ul li:last-child::before {
+    background-image:url('./images/github.png');
+}
+.navList ul li a {
+    color: #fff;
+    text-decoration: none;
+}
+.page-container.show-nav + .navList ul {
+    transform: translateX(15px);
+}
+.page-container.show-nav + .navList ul li {
+    transform: translateX(0);
+    transition-delay: .4s;
+}
+.page-container.show-nav + .navList ul li + li {
+    margin-left: 10px;
+}
+.page-container.show-nav + .navList ul li + li + li {
+    margin-left: 20px;
+}
